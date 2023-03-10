@@ -89,6 +89,15 @@ export const validationSuccessful = <T>(codec: t.Type<T>) => (data: unknown): vo
     }
 };
 
+export const validationSuccessfulResultingIn = <T>(codec: t.Type<T>) => (data: unknown, expectedResult: T): void => {
+    const result = validate<T>(data, codec);
+    if (isNone(result)) {
+        throw new Error("Validation unexpectedly failed");
+    } else {
+        expectStructure(result.value, expectedResult);
+    }
+};
+
 export const validationFailed = <T>(codec: t.Type<T>) => (data: unknown): void => {
     const result = validate<T>(data, codec);
     if (isSome(result)) {

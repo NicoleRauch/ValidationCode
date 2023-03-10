@@ -12,6 +12,7 @@
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
+    "exactOptionalPropertyTypes": true,
     "noUnusedLocals": false,
     "allowSyntheticDefaultImports": true,
     "suppressImplicitAnyIndexErrors": true,

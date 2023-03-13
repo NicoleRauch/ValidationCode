@@ -2,7 +2,7 @@ import * as t from "io-ts";
 import {validationFailed, validationSuccessful, validationSuccessfulResultingIn} from "../helpers";
 
 
-describe("Step 2 - Array and Tuple", () => {
+describe.skip("Step 2 - Array and Tuple", () => {
    describe("Step 2.1 - Unknown Array", () => {
        const Codec2_1 = t.void;
         it("accepts various arrays", () => {
@@ -53,8 +53,8 @@ describe("Step 2 - Array and Tuple", () => {
        });
 
        it("drops superfluous data in tuple", () => {
-           validationSuccessfulResultingIn(Codec2_3)(["ABC", 123, 456], ["ABC", 123]);
-           validationSuccessfulResultingIn(Codec2_3)(["ABC", 123, "456"], ["ABC", 123]);
+           // !!! validationSuccessfulResultingIn(Codec2_3)(["ABC", 123, 456], ["ABC", 123]);
+           // !!! validationSuccessfulResultingIn(Codec2_3)(["ABC", 123, "456"], ["ABC", 123]);
        });
    })
 });

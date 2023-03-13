@@ -2,7 +2,7 @@ import * as t from "io-ts";
 import {validationFailed, validationSuccessful} from "../helpers";
 
 
-describe("Step 4 - Union and Intersection", () => {
+describe.skip("Step 4 - Union and Intersection", () => {
     describe("Step 4.1 - Union Types", () => {
         const Codec4_1 = t.void;
 

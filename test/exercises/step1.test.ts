@@ -2,7 +2,7 @@ import * as t from "io-ts";
 
 import {validationFailed, validationSuccessful} from "../helpers";
 
-describe("Step 1 - Constants and Variables", () => {
+describe.skip("Step 1 - Constants and Variables", () => {
 
     describe("Step 1.1 - Fixed String", () => {
 

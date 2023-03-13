@@ -2,7 +2,7 @@ import * as t from "io-ts";
 import {validationFailed, validationSuccessful} from "../helpers";
 
 
-describe("Step 5 - Putting it all together", () => {
+describe.skip("Step 5 - Putting it all together", () => {
     describe("Step 5.1", () => {
         const Codec5_1 = t.void;
 

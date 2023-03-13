@@ -18,7 +18,7 @@ const IOUser = t.type({
     name: t.string
 });
 
-const myData = {};
+const myData: unknown = {};
 
 type IUser = t.TypeOf<typeof IOUser>;
 

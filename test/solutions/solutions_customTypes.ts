@@ -11,5 +11,5 @@ export const LuxonDateTimeFromString = new t.Type<L.DateTime, string, unknown>(
             const d: L.DateTime = L.DateTime.fromISO(s);
             return d.isValid ? t.success(d) : t.failure(u, c);
         }),
-    (a) => a.toString()
+    (a: L.DateTime) => a.toString()
 );

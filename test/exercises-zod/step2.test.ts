@@ -1,55 +1,55 @@
-import * as t from "io-ts";
-import {validationFailed, validationSuccessful, validationSuccessfulResultingIn} from "../helpers-iots";
+import * as Z from "zod";
+import {zodValidationFailed, zodValidationSuccessful, zodValidationSuccessfulResultingIn} from "../helpers-zod";
 
 
 describe.skip("Step 2 - Array and Tuple", () => {
    describe("Step 2.1 - Unknown Array", () => {
-       const Codec2_1 = t.void;
+       const Codec2_1 = Z.void();
         it("accepts various arrays", () => {
-            validationSuccessful(Codec2_1)([]);
-            validationSuccessful(Codec2_1)([1, 2, 3]);
-            validationSuccessful(Codec2_1)(["a", "b"]);
-            validationSuccessful(Codec2_1)([{x: 1}, {y: "yay"}]);
+            zodValidationSuccessful(Codec2_1)([]);
+            zodValidationSuccessful(Codec2_1)([1, 2, 3]);
+            zodValidationSuccessful(Codec2_1)(["a", "b"]);
+            zodValidationSuccessful(Codec2_1)([{x: 1}, {y: "yay"}]);
         });
 
         it("does not accept strings", () => {
-            validationFailed(Codec2_1)("ABC");
+            zodValidationFailed(Codec2_1)("ABC");
         });
         it("even accepts arrays with mixed contents (i.e. tuples)", () => {
-            validationSuccessful(Codec2_1)(["ABC", 123]);
+            zodValidationSuccessful(Codec2_1)(["ABC", 123]);
         });
    });
 
    describe("Step 2.2 - Array of numbers", () => {
-      const Codec2_2 = t.void;
+      const Codec2_2 = Z.void();
 
       it("accepts various number arrays", () => {
-          validationSuccessful(Codec2_2)([]);
-          validationSuccessful(Codec2_2)([1, 2, 3]);
-          validationSuccessful(Codec2_2)([1, 2, 3.5]);
+          zodValidationSuccessful(Codec2_2)([]);
+          zodValidationSuccessful(Codec2_2)([1, 2, 3]);
+          zodValidationSuccessful(Codec2_2)([1, 2, 3.5]);
       });
       it("does not accept array of strings", () => {
-          validationFailed(Codec2_2)(["abc"]);
+          zodValidationFailed(Codec2_2)(["abc"]);
       });
       it("does not accept mixed array (i.e. tuple)", () => {
-          validationFailed(Codec2_2)([123, "abc"]);
+          zodValidationFailed(Codec2_2)([123, "abc"]);
       });
    });
 
    describe("Step 2.3 - Tuple of string and number", () => {
-       const Codec2_3 = t.void;
+       const Codec2_3 = Z.void();
 
        it("accepts various tuples", () => {
-          validationSuccessful(Codec2_3)(["ABC", 123]);
-          validationSuccessful(Codec2_3)(["", 2.75]);
+          zodValidationSuccessful(Codec2_3)(["ABC", 123]);
+          zodValidationSuccessful(Codec2_3)(["", 2.75]);
        });
 
        it("rejects empty tuple if string and number are expected", () => {
-          validationFailed(Codec2_3)([]);
+          zodValidationFailed(Codec2_3)([]);
        });
 
        it("rejects tuple with missing entries", () => {
-           validationFailed(Codec2_3)(["ABC"]);
+           zodValidationFailed(Codec2_3)(["ABC"]);
        });
 
        it("drops superfluous data in tuple", () => {

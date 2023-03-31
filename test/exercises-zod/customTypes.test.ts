@@ -1,11 +1,11 @@
-import * as t from "io-ts";
+import * as Z from "zod";
 import * as L from "luxon";
-import {validationFailed, validationSuccessfulResultingIn} from "../helpers-iots";
+import {zodValidationFailed, zodValidationSuccessfulResultingIn} from "../helpers-zod";
 
 
 describe.skip("Custom Types", () => {
 
-    const Codec_CT = t.void;
+    const Codec_CT = Z.void();
 
     it("converts an ISO DateTime string to a DateTime object", () => {
         const s = "2022-09-17T17:59:25Z";
@@ -16,6 +16,6 @@ describe.skip("Custom Types", () => {
     it("fails to convert an arbitrary string", () => {
         const s = "Hello";
 
-        validationFailed(Codec_CT)(s);
+        zodValidationFailed(Codec_CT)(s);
     });
 })

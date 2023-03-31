@@ -1,5 +1,5 @@
-import * as t from "io-ts";
-import {validationFailed, validationSuccessful} from "../helpers-iots";
+import * as Z from "zod";
+import {zodValidationFailed, zodValidationSuccessful} from "../helpers-zod";
 
 describe.skip("Branding", () => {
 
@@ -40,10 +40,10 @@ describe.skip("Branding", () => {
 
     it("Branding with io-ts allows to check other properties as well", () => {
 
-        const IOArtNo = t.void;
+        const IOArtNo = Z.void();
 
-        validationSuccessful(IOArtNo)("X");
-        validationFailed(IOArtNo)("");
+        zodValidationSuccessful(IOArtNo)("X");
+        zodValidationFailed(IOArtNo)("");
 
     });
 

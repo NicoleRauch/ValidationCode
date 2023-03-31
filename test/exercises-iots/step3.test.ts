@@ -1,5 +1,5 @@
 import * as t from "io-ts";
-import {validationFailed, validationSuccessful, validationSuccessfulResultingIn} from "../helpers";
+import {validationFailed, validationSuccessful, validationSuccessfulResultingIn} from "../helpers-iots";
 
 
 describe.skip("Step 3 - Records and Types", () => {

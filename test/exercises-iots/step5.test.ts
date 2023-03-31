@@ -1,5 +1,5 @@
 import * as t from "io-ts";
-import {validationFailed, validationSuccessful} from "../helpers";
+import {validationFailed, validationSuccessful} from "../helpers-iots";
 
 
 describe.skip("Step 5 - Putting it all together", () => {

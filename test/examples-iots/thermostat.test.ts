@@ -1,7 +1,7 @@
 import {isRight} from "fp-ts/Either";
 import {Validation} from "io-ts";
 
-import {ICommands, IOCommands} from "../../src/examples/thermostat";
+import {ICommands, IOCommands} from "../../src/examples-iots/thermostat";
 
 
 describe("Thermostat tests", () => {

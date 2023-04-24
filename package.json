@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@types/luxon": "3.2.0",
-    "fp-ts": "2.13.1",
-    "io-ts": "2.2.20",
     "luxon": "3.3.0",
     "ramda": "0.28.0",
     "zod": "3.21.4"

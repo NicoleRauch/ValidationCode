@@ -2,6 +2,10 @@ import * as Z from "zod";
 import {zodValidationFailed, zodValidationSuccessful, zodValidationSuccessfulResultingIn} from "../helpers-zod";
 
 
+it("has dummy test to avoid test failure", () => {
+    expect(1).toEqual(1);
+});
+
 describe.skip("Step 3 - Records and Types", () => {
 
     describe("Step 3.1 - Unknown Record", () => {

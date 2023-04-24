@@ -2,6 +2,10 @@ import * as Z from "zod";
 import {zodValidationFailed, zodValidationSuccessful} from "../helpers-zod";
 
 
+it("has dummy test to avoid test failure", () => {
+    expect(1).toEqual(1);
+});
+
 describe.skip("Step 5 - Putting it all together", () => {
     describe("Step 5.1", () => {
         const Codec5_1 = Z.void();

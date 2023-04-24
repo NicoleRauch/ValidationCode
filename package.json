@@ -4,10 +4,8 @@
   "scripts": {
     "compile": "tsc",
     "typecheck": "tsc --noEmit",
-    "eslint": "npx eslint . --ext .ts,.tsx",
     "jest": "npx jest",
-    "test": "npm run typecheck && npm run jest",
-    "test-full": "npm run typecheck && npm run eslint && npm run jest"
+    "test": "npm run typecheck && npm run jest"
   },
   "dependencies": {
     "@types/luxon": "3.2.0",

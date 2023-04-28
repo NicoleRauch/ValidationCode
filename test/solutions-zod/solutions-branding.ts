@@ -1,8 +1,7 @@
-import * as t from "io-ts";
+import * as Z from "zod";
 
-type Brand<K, T> = K & { __brand: T };
-
-interface IArtNoBrand { readonly IArtNo: unique symbol }
-const IOArtNo = t.brand(t.string, (s): s is t.Branded<string, IArtNoBrand> => s.length > 0, 'IArtNo');
-type IArtNo = t.TypeOf<typeof IOArtNo>;
+const IOArtNo = Z.string().min(1).brand<"ArtNo">();
+type IArtNo = Z.TypeOf<typeof IOArtNo>;
 const artNoFor = (x: string): IArtNo => x as IArtNo;
+
+// see https://github.com/colinhacks/zod#brand

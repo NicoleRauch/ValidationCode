@@ -57,8 +57,8 @@ describe.skip("Step 2 - Array and Tuple", () => {
        });
 
        it("drops superfluous data in tuple", () => {
-           // !!! validationSuccessfulResultingIn(Codec2_3)(["ABC", 123, 456], ["ABC", 123]);
-           // !!! validationSuccessfulResultingIn(Codec2_3)(["ABC", 123, "456"], ["ABC", 123]);
+           // !!! zodValidationSuccessfulResultingIn(Codec2_3)(["ABC", 123, 456], ["ABC", 123]);
+           // !!! zodValidationSuccessfulResultingIn(Codec2_3)(["ABC", 123, "456"], ["ABC", 123]);
        });
    })
 });

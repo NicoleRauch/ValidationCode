@@ -1,15 +1,17 @@
-import {Context} from "io-ts";
-import * as t from "io-ts";
+import * as Z from "zod";
 import * as L from "luxon";
-import {ChainRec} from "fp-ts/Either";
 
-export const LuxonDateTimeFromString = new t.Type<L.DateTime, string, unknown>(
-    'LuxonDateTimeFromString',
-    (u: unknown): u is L.DateTime => u instanceof L.DateTime,
-    (u: unknown, c: Context) =>
-        ChainRec.chain(t.string.validate(u, c), (s: string) => {
-            const d: L.DateTime = L.DateTime.fromISO(s);
-            return d.isValid ? t.success(d) : t.failure(u, c);
-        }),
-    (a: L.DateTime) => a.toString()
-);
+export const LuxonDateTimeFromString: Z.ZodEffects<Z.ZodString, L.DateTime, unknown> = 
+  Z.string().transform((value, context) => {
+    const d: L.DateTime = L.DateTime.fromISO(value);
+    if(!d.isValid){
+      context.addIssue({
+        code: Z.ZodIssueCode.custom,
+        message: "not a valid ISO-Date string"
+      });
+      return Z.NEVER;
+    }
+    return d;
+});
+
+// see https://zod.dev/?id=transform

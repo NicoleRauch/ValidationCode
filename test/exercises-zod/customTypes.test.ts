@@ -14,7 +14,7 @@ describe.skip("Custom Types", () => {
     it("converts an ISO DateTime string to a DateTime object", () => {
         const s = "2022-09-17T17:59:25Z";
 
-        // !!! validationSuccessfulResultingIn(Codec_CT)(s, L.DateTime.fromISO(s));
+        // !!! zodValidationSuccessfulResultingIn(Codec_CT)(s, L.DateTime.fromISO(s));
     });
 
     it("fails to convert an arbitrary string", () => {

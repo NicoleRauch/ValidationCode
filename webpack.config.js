@@ -12,7 +12,7 @@ const isDevelopment = process.env.NODE_ENV !== 'production';
 module.exports = {
 
     entry: [
-        "./src/index.tsx"
+        "./frontend/index.tsx"
     ],
 
     resolve: {

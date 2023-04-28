@@ -2,16 +2,29 @@
   "name": "validation-code",
   "private": true,
   "scripts": {
+    "clean": "npm dedupe && npm prune && npm install",
+    "check-updates": "npm outdated",
     "compile": "tsc",
     "typecheck": "tsc --noEmit",
     "jest": "npx jest",
-    "test": "npm run typecheck && npm run jest"
+    "test": "npm run typecheck && npm run jest",
+    "start-backend": "node backend/server.js",
+    "start-frontend": "webpack serve"
   },
   "dependencies": {
     "@types/luxon": "3.2.0",
     "luxon": "3.3.0",
     "ramda": "0.28.0",
-    "zod": "3.21.4"
+    "zod": "3.21.4",
+
+    "body-parser": "1.18.3",
+    "express": "4.16.4",
+
+    "@tanstack/react-query": "4.28.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-redux": "8.0.5",
+    "react-refresh": "0.11.0"
   },
   "devDependencies": {
     "@babel/core": "7.21.0",
@@ -20,6 +33,23 @@
     "@types/jest": "29.4.0",
     "babel-jest": "29.4.3",
     "jest": "29.4.3",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+
+    "@babel/preset-react": "7.16.7",
+    "@pmmmwh/react-refresh-webpack-plugin": "0.5.7",
+    "@types/core-js": "2.5.5",
+    "@types/ramda": "0.28.4",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "babel-loader": "8.2.4",
+    "babel-plugin-transform-react-stateless-component-name": "1.1.2",
+    "circular-dependency-plugin": "5.2.2",
+    "html-webpack-plugin": "5.5.0",
+    "isdev": "1.0.1",
+    "ts-loader": "9.2.8",
+    "webpack": "5.74.0",
+    "webpack-cli": "4.10.0",
+    "webpack-dev-server": "4.10.0",
+    "webpack-merge": "5.8.0"
   }
 }

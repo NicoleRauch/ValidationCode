@@ -7,7 +7,7 @@ export const LuxonDateTimeFromString: z.ZodEffects<z.ZodString, L.DateTime, unkn
     if(!d.isValid){
       context.addIssue({
         code: z.ZodIssueCode.custom,
-        message: "not a valid ISO-Date string"
+        message: `not a valid ISO-Date string: ${d.invalidExplanation}`
       });
       return z.NEVER;
     }

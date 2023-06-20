@@ -1,5 +1,5 @@
-import * as Z from "zod";
+import * as z from "zod";
 
-const Codec2_1 = Z.unknown().array();
-const Codec2_2 = Z.array(Z.number());
-const Codec2_3 = Z.tuple([Z.string(), Z.number()]);
+const Codec2_1 = z.unknown().array();
+const Codec2_2 = z.array(z.number());
+const Codec2_3 = z.tuple([z.string(), z.number()]);

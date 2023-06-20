@@ -1,15 +1,15 @@
-import * as Z from "zod";
+import * as z from "zod";
 import * as L from "luxon";
 
-export const LuxonDateTimeFromString: Z.ZodEffects<Z.ZodString, L.DateTime, unknown> = 
-  Z.string().transform((value, context) => {
+export const LuxonDateTimeFromString: z.ZodEffects<z.ZodString, L.DateTime, unknown> =
+  z.string().transform((value, context) => {
     const d: L.DateTime = L.DateTime.fromISO(value);
     if(!d.isValid){
       context.addIssue({
-        code: Z.ZodIssueCode.custom,
+        code: z.ZodIssueCode.custom,
         message: "not a valid ISO-Date string"
       });
-      return Z.NEVER;
+      return z.NEVER;
     }
     return d;
 });

@@ -1,4 +1,4 @@
-import * as Z from "zod";
+import * as z from "zod";
 import {zodValidationFailed, zodValidationSuccessful} from "../helpers-zod";
 
 
@@ -8,7 +8,7 @@ it("has dummy test to avoid test failure", () => {
 
 describe.skip("Step 5 - Putting it all together", () => {
     describe("Step 5.1", () => {
-        const Codec5_1 = Z.void();
+        const Codec5_1 = z.void();
 
         it("allows and disallows various elements", () => {
             zodValidationSuccessful(Codec5_1)({a: "ABC"});
@@ -20,7 +20,7 @@ describe.skip("Step 5 - Putting it all together", () => {
     });
 
     describe("Step 5.2", () => {
-        const Codec5_2 = Z.void();
+        const Codec5_2 = z.void();
 
         it("allows and disallows various elements", () => {
             zodValidationSuccessful(Codec5_2)({a: "abc"});
@@ -31,7 +31,7 @@ describe.skip("Step 5 - Putting it all together", () => {
     });
 
     describe("Step 5.3", () => {
-        const Codec5_3 = Z.void();
+        const Codec5_3 = z.void();
 
         it("allows and disallows various elements", () => {
             zodValidationSuccessful(Codec5_3)({a: "A", b: "B"});

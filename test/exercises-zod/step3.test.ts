@@ -1,4 +1,4 @@
-import * as Z from "zod";
+import * as z from "zod";
 import {zodValidationFailed, zodValidationSuccessful, zodValidationSuccessfulResultingIn} from "../helpers-zod";
 
 
@@ -9,7 +9,7 @@ it("has dummy test to avoid test failure", () => {
 describe.skip("Step 3 - Records and Types", () => {
 
     describe("Step 3.1 - Unknown Record", () => {
-        const Codec3_1 = Z.void();
+        const Codec3_1 = z.void();
 
         it("accepts various records", () => {
             zodValidationSuccessful(Codec3_1)({});
@@ -26,7 +26,7 @@ describe.skip("Step 3 - Records and Types", () => {
     });
 
     describe("Step 3.2 - Record", () => {
-        const Codec3_2 = Z.void();
+        const Codec3_2 = z.void();
         it("accepts string-number records", () => {
             zodValidationSuccessful(Codec3_2)({});
             zodValidationSuccessful(Codec3_2)({"a": 123});
@@ -44,7 +44,7 @@ describe.skip("Step 3 - Records and Types", () => {
     });
 
     describe("Step 3.3 - Type", () => {
-        const Codec3_3 = Z.void();
+        const Codec3_3 = z.void();
 
         it("accepts objects with matching fields", () => {
             zodValidationSuccessful(Codec3_3)({a: 777, b: "Hello"});
@@ -52,7 +52,7 @@ describe.skip("Step 3 - Records and Types", () => {
         });
 
         it("even accepts objects with excessive fields - but strips the field", () => {
-            // !!! zodValidationSuccessfulResultingIn(Codec3_3)({a: 777, b: "Hello", also: "x", and: 123}, {a: 777, b: "Hello"});
+            zodValidationSuccessfulResultingIn(Codec3_3)({a: 777, b: "Hello", also: "x", and: 123}, {a: 777, b: "Hello"});
         });
 
         it("does not accept objects with matching fields but wrong data", () => {
@@ -71,7 +71,7 @@ describe.skip("Step 3 - Records and Types", () => {
     });
 
     describe("Step 3.4 - Partial Type", () => {
-        const Codec3_4 = Z.void();
+        const Codec3_4 = z.void();
 
         it("accepts objects with matching fields", () => {
             zodValidationSuccessful(Codec3_4)({a: 777, b: "Hello"});
@@ -79,7 +79,7 @@ describe.skip("Step 3 - Records and Types", () => {
         });
 
         it("even accepts objects with excessive fields - but strips the fields", () => {
-            // !!! zodValidationSuccessfulResultingIn(Codec3_4)({a: 777, b: "Hello", also: "x", and: 123}, {a: 777, b: "Hello"});
+            zodValidationSuccessfulResultingIn(Codec3_4)({a: 777, b: "Hello", also: "x", and: 123}, {a: 777, b: "Hello"});
         });
 
         it("also accepts objects with missing fields", () => {
@@ -93,20 +93,20 @@ describe.skip("Step 3 - Records and Types", () => {
         });
 
         it("even accepts objects with different fields - but strips them", () => {
-            // !!! zodValidationSuccessfulResultingIn(Codec3_4)({x: "aaa"}, {});
+            zodValidationSuccessfulResultingIn(Codec3_4)({x: "aaa"}, {});
         });
     });
 
     describe("Step 3.5 - Strict Type", () => {
-        const Codec3_5 = Z.void();
+        const Codec3_5 = z.void();
 
         it("accepts objects with matching fields", () => {
             zodValidationSuccessful(Codec3_5)({a: 777, b: "Hello"});
             zodValidationSuccessful(Codec3_5)({a: 1.234, b: ""});
         });
 
-        it("accepts objects with excessive fields but drops them", () => {
-            // !!! zodValidationSuccessfulResultingIn(Codec3_5)({a: 777, b: "Hello", also: "x", and: 123}, {a: 777, b: "Hello"});
+        it("does not accept objects with excessive fields", () => {
+            zodValidationFailed(Codec3_5)({a: 777, b: "Hello", also: "x", and: 123});
         });
 
         it("does not accept objects with missing fields", () => {

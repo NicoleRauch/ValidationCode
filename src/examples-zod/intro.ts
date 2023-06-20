@@ -1,4 +1,4 @@
-import * as Z from "zod";
+import * as z from "zod";
 
 export type Data = { a: { b: { c: string } } };
 
@@ -10,21 +10,21 @@ const f = (d: any): void => {
 };
 
 
-const ZUser = Z.object({
-    userId: Z.number(),
-    name: Z.string()
+const ZUser = z.object({
+    userId: z.number(),
+    name: z.string()
 });
 
 const myData: unknown = {};
 
-type IUser = Z.infer<typeof ZUser>;
+type IUser = z.infer<typeof ZUser>;
 
 const myUserValidation: IUser = ZUser.parse(myData);
 
 try {
     const myUserValidation: IUser = ZUser.parse(myData);
 } catch (e) {
-    if(e instanceof Z.ZodError) {
+    if(e instanceof z.ZodError) {
         console.log(e);
     }
 }

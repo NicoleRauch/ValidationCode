@@ -1,4 +1,4 @@
-import * as Z from "zod";
+import * as z from "zod";
 import {zodValidationFailed, zodValidationSuccessful} from "../helpers-zod";
 
 it("has dummy test to avoid test failure", () => {
@@ -44,7 +44,7 @@ describe.skip("Branding", () => {
 
     it("Branding with ZOD allows to check other properties as well", () => {
 
-        const IOArtNo = Z.void();
+        const IOArtNo = z.void();
 
         zodValidationSuccessful(IOArtNo)("X");
         zodValidationFailed(IOArtNo)("");

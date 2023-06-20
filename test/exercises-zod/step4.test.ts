@@ -1,4 +1,4 @@
-import * as Z from "zod";
+import * as z from "zod";
 import {zodValidationFailed, zodValidationSuccessful, zodValidationSuccessfulResultingIn} from "../helpers-zod";
 
 
@@ -8,7 +8,7 @@ it("has dummy test to avoid test failure", () => {
 
 describe.skip("Step 4 - Union and Intersection", () => {
     describe("Step 4.1 - Union Types", () => {
-        const Codec4_1 = Z.void();
+        const Codec4_1 = z.void();
 
         it("accepts each part of the union", () => {
             zodValidationSuccessful(Codec4_1)("ABC");
@@ -22,24 +22,24 @@ describe.skip("Step 4 - Union and Intersection", () => {
     });
 
     describe("Step 4.2 - Intersection Types", () => {
-        const Codec4_2 = Z.void();
+        const Codec4_2 = z.void();
 
         it("accepts objects that contain both parts", () => {
-           zodValidationSuccessful(Codec4_2)({a: 7, b: "X"});
+            zodValidationSuccessful(Codec4_2)({a: 7, b: "X"});
         });
 
         it("accepts objects that contain both parts and unknown entries - but strips fields", () => {
-           // !!! zodValidationSuccessfulResultingIn(Codec4_2)({a: 7, b: "X", c: "ccc"}, {a: 7, b: "X"});
+            zodValidationSuccessfulResultingIn(Codec4_2)({a: 7, b: "X", c: "ccc"}, {a: 7, b: "X"});
         });
 
         it("rejects objects that contain only one part", () => {
-           zodValidationFailed(Codec4_2)({a: 111});
-           zodValidationFailed(Codec4_2)({b: "ABC"});
+            zodValidationFailed(Codec4_2)({a: 111});
+            zodValidationFailed(Codec4_2)({b: "ABC"});
         });
 
         it("rejects objects that contain one part and unknown entries", () => {
-           zodValidationFailed(Codec4_2)({a: 111, c: "ccc"});
-           zodValidationFailed(Codec4_2)({b: "ABC", c: "ccc"});
+            zodValidationFailed(Codec4_2)({a: 111, c: "ccc"});
+            zodValidationFailed(Codec4_2)({b: "ABC", c: "ccc"});
         });
     });
 });

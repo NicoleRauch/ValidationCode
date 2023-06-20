@@ -1,4 +1,4 @@
-import * as Z from "zod";
+import * as z from "zod";
 
-const Codec4_1 = Z.union([Z.number(), Z.string()]);
-const Codec4_2 = Z.intersection(Z.object({a: Z.number()}), Z.object({b: Z.string()}));
+const Codec4_1 = z.union([z.number(), z.string()]);
+const Codec4_2 = z.intersection(z.object({a: z.number()}), z.object({b: z.string()}));

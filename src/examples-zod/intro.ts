@@ -1,3 +1,4 @@
+import {ZodError} from "zod";
 import * as z from "zod";
 
 export type Data = { a: { b: { c: string } } };
@@ -19,12 +20,11 @@ const myData: unknown = {};
 
 type IUser = z.infer<typeof ZUser>;
 
-const myUserValidation: IUser = ZUser.parse(myData);
-
-try {
-    const myUserValidation: IUser = ZUser.parse(myData);
-} catch (e) {
-    if(e instanceof z.ZodError) {
-        console.log(e);
+const validate = (): IUser | void => {
+    const myUserValidation: { success: true; data: IUser; } | { success: false; error: ZodError; } = ZUser.safeParse(myData);
+    if(myUserValidation.success) {
+        return myUserValidation.data;
+    } else {
+        console.log(myUserValidation.error);
     }
 }

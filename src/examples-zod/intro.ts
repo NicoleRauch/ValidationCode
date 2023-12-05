@@ -18,10 +18,10 @@ const ZUser = z.object({
 
 const myData: unknown = {};
 
-type IUser = z.infer<typeof ZUser>;
+type User = z.infer<typeof ZUser>;
 
-const validate = (): IUser | void => {
-    const myUserValidation: { success: true; data: IUser; } | { success: false; error: ZodError; } = ZUser.safeParse(myData);
+const validate = (): User | void => {
+    const myUserValidation: { success: true; data: User; } | { success: false; error: ZodError; } = ZUser.safeParse(myData);
     if(myUserValidation.success) {
         return myUserValidation.data;
     } else {

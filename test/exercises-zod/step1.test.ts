@@ -57,7 +57,7 @@ describe.skip("Step 1 - Constants and Variables", () => {
             zodValidationFailed(Codec1_3)(null);
         });
         it("does not parse an object", () => {
-            zodValidationFailed(Codec1_3)({name: "Hello"});
+            zodValidationFailed(Codec1_3)({ name: "Hello" });
         });
     });
 
@@ -78,7 +78,7 @@ describe.skip("Step 1 - Constants and Variables", () => {
             zodValidationFailed(Codec1_4)(null);
         });
         it("does not parse an object", () => {
-            zodValidationFailed(Codec1_4)({name: "Hello"});
+            zodValidationFailed(Codec1_4)({ name: "Hello" });
         });
     });
 });

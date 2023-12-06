@@ -46,7 +46,7 @@ describe.skip("Step 5 - Additional Functions", () => {
             zodValidationSuccessful(Codec5_3)("Name: Sebastian");
         });
 
-        it("rejects negative numbers", () => {
+        it("rejects strings with a different prefix", () => {
             zodValidationFailed(Codec5_3)("My Name: Fritz");
         });
     });
@@ -54,12 +54,12 @@ describe.skip("Step 5 - Additional Functions", () => {
     describe("Step 5.4 - EMail", () => {
         const Codec5_4 = z.void();
 
-        it("accepts strings matching the expected prefix", () => {
+        it("accepts strings matching an email address", () => {
             zodValidationSuccessful(Codec5_4)("info@example.com");
             zodValidationSuccessful(Codec5_4)("conference@my-domain.de");
         });
 
-        it("rejects negative numbers", () => {
+        it("rejects strings that are not an email address", () => {
             zodValidationFailed(Codec5_4)("Ein Text");
         });
     });
